@@ -7,13 +7,11 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-// Вставьте сгенерированный секретный ключ сюда
 const secretKey = 'f55d81a9558144a6f0e8661cf8f513c2d665f627ee35db3bda9468f192382e0b';
 
-// Temporary array to store posts
 const posts = [];
 
-// CRUD Routes
+// CRUD 
 app.post('/api/posts', verifyToken, (req, res) => {
   jwt.verify(req.token, secretKey, (err, authData) => {
     if (err) {
@@ -35,14 +33,10 @@ app.get('/api/posts', (req, res) => {
   res.json(posts);
 });
 
-// Add routes for updating and deleting posts
 
-// Login route
 app.post('/api/login', (req, res) => {
-  // Replace this with your actual user authentication logic
   const username = req.body.username;
 
-  // Mock user for simplicity
   const user = {
     username
   };
@@ -56,7 +50,6 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-// Verify Token function
 function verifyToken(req, res, next) {
   const bearerHeader = req.headers['authorization'];
 
@@ -72,7 +65,6 @@ function verifyToken(req, res, next) {
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
   
-    // Replace this with your actual user authentication logic
     if (username === 'user' && password === 'password') {
       const user = { username };
       jwt.sign({ user }, secretKey, { expiresIn: '1h' }, (err, token) => {
