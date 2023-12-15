@@ -2,6 +2,34 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
+
+
+
+//использовала моковые данные так как я не смогла скачать программу для базы
+//чтобы делать пост метод нужно использовать в Powershell с другими параметрамиә
+
+// $loginBody = @{
+//     "username" = "user"
+//     "password" = "password"
+// } | ConvertTo-Json
+
+// $token = Invoke-RestMethod -Uri "http://localhost:3000/api/login" -Method Post -Body $loginBody -Headers @{ "Content-Type" = "application/json" }
+
+// $postBody = @{
+//     "title" = "Название поста"
+//     "text"  = "Текст поста"
+// } | ConvertTo-Json
+
+// # Отправляем запрос, указывая кодировку UTF-8
+// $tokenValue = $token.token
+// Invoke-RestMethod -Uri "http://localhost:3000/api/posts" -Method Post -Body $postBody -Headers @{
+//     "Content-Type"  = "application/json"
+//     "Authorization" = "Bearer $tokenValue"
+// } -ContentType "application/json; charset=utf-8"
+
+
+
+
 const app = express();
 const port = process.env.PORT || 3000;
 
